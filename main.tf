@@ -56,7 +56,7 @@ resource "aws_security_group" "minecraftsg" {
 resource "aws_efs_mount_target" "efs" {
   file_system_id  = aws_efs_file_system.minecraftData.id
   security_groups = [aws_security_group.minecraftsg.id]
-  subnet_id = "subnet-badc60e7"
+  subnet_id       = "subnet-badc60e7"
 }
 
 data "template_file" "script" {
@@ -75,8 +75,8 @@ resource "aws_instance" "web" {
   }
 
   security_groups = [aws_security_group.minecraftsg.name]
-  key_name = "test"
-  user_data = data.template_file.script.rendered
+  key_name        = "test"
+  user_data       = data.template_file.script.rendered
 }
 
 resource "aws_eip" "minecraftIP" {
